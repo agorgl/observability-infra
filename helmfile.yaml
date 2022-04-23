@@ -2,6 +2,9 @@ repositories:
   # Prometheus community charts, https://github.com/prometheus-community/helm-charts
   - name: prometheus-community
     url: https://prometheus-community.github.io/helm-charts
+  # Grafana charts, https://github.com/grafana/helm-charts/tree/main/charts/loki-stack
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
 
 namespace: observability
 
@@ -11,6 +14,12 @@ releases:
     chart: prometheus-community/kube-prometheus-stack
     values:
       - values/kube-prometheus-stack.yaml.gotmpl
+
+  # Loki, Promtail
+  - name: loki-stack
+    chart: grafana/loki-stack
+    values:
+      - values/loki-stack.yaml.gotmpl
 
 values:
   - .env.{{ .Environment.Name }}.yaml
