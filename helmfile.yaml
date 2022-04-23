@@ -1,0 +1,16 @@
+repositories:
+  # Prometheus community charts, https://github.com/prometheus-community/helm-charts
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+
+namespace: observability
+
+releases:
+  # Prometheus, Grafana
+  - name: kube-prometheus-stack
+    chart: prometheus-community/kube-prometheus-stack
+    values:
+      - values/kube-prometheus-stack.yaml.gotmpl
+
+values:
+  - .env.{{ .Environment.Name }}.yaml

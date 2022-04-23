@@ -1,0 +1,21 @@
+fullnameOverride: prometheus
+
+prometheus:
+  fullnameOverride: prometheus
+
+grafana:
+  fullnameOverride: grafana
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - grafana.{{ .Values.domain }}
+
+alertmanager:
+  fullnameOverride: alertmanager
+
+prometheus-node-exporter:
+  fullnameOverride: node-exporter
+
+kube-state-metrics:
+  fullnameOverride: kube-state-metrics
